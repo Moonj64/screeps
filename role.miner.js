@@ -14,6 +14,12 @@ module.exports = {
 		}
 		var worksource = Game.getObjectById(creep.memory.worksource);
 
-		console.log(creep.pos.getRangeTo(worksource));
+		var range = creep.pos.getRangeTo(worksource);
+		console.log(range);
+		if (range > 1) {
+			creep.moveTo(worksource);
+		} else {
+			console.log("I'm here!");
+		}
 	}
 };
