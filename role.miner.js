@@ -19,6 +19,15 @@ module.exports = {
 			return;
 		}
 
+		var repair_structures = creep.pos.findInRange(FIND_STRUCTURES, 1, {
+			filter:function(structure) {
+				return structure.hits != structure.hitsMax;
+		}});
+
+		if (repair_structures.length != 0) {
+			creep.repair(repair_structures[0]);
+		}
+
 		var energy_caches = creep.pos.findInRange(FIND_STRUCTURES, 1, { 
 			filter:function(structure) { 
 				switch (structure.structureType) {
