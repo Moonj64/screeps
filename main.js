@@ -4,7 +4,7 @@ module.exports.loop = function() {
 		var creep = Game.creeps[name];
 		if (creep == undefined) {
 			/* It's dead Jim */
-			var err = Game.Spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE], name);
+			var err = Game.spawns["Spawn1"].spawnCreep([WORK, CARRY, MOVE], name);
 			if (err != OK) {
 				console.log(err);
 			}
