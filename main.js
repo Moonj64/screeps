@@ -6,7 +6,19 @@ module.exports.loop = function() {
 		var creep = Game.creeps[name];
 		if (creep == undefined) {
 			/* It's dead Jim */
-			var err = Game.spawns["Spawn1"].spawnCreep([WORK, WORK, CARRY, MOVE], name);
+			var body;
+			switch (Memory.creeps[name].role) {
+			case "miner":
+				body = [WORK, WORK, CARRY, MOVE];
+				break;
+			case "upgrader":
+				body = [WORK, CARRY, CARRY, MOVE, MOVE];
+				break;
+			default:	
+				body = [WORK, CARRY, MOVE];
+				break;
+			}
+			var err = Game.spawns["Spawn1"].spawnCreep(body, name);
 			if (err != OK) {
 				console.log("Could not spawn creep (" + name + "), error code: " + err);
 			}
