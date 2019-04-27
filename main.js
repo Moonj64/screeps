@@ -1,3 +1,5 @@
+var roleMiner = require('role.miner');
+
 
 module.exports.loop = function() {
 	for(var name in Memory.creeps) {
@@ -9,7 +11,14 @@ module.exports.loop = function() {
 				console.log(err);
 			}
 		} else {
-			console.log("success");
+			switch (creep.memory.role) {
+			case "miner":
+				roleMiner.run(creep);
+				break;
+			default:
+				console.log("Unknown role for " + name);
+				break;
+			}
 		}
 	}
 }
