@@ -10,6 +10,14 @@ module.exports = {
 		}
 
 		if (creep.memory.upgrading) {
+			var spawn = Game.spawns["Spawn1"];
+			if (spawn.energy != spawn.energyCapacity) {
+				var err = creep.transfer(spawn, RESOURCE_ENERGY);
+				if (err == ERR_NOT_IN_RANGE) {
+					creep.moveTo(spawn);
+				}
+			}
+
 			var err = creep.upgradeController(creep.room.controller);
 			if (err == ERR_NOT_IN_RANGE) {
 				creep.moveTo(creep.room.controller);
