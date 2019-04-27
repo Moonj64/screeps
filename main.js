@@ -6,7 +6,7 @@ module.exports.loop = function() {
 		var creep = Game.creeps[name];
 		if (creep == undefined) {
 			/* It's dead Jim */
-			var body;
+			var body = [WORK, CARRY, MOVE];
 			switch (Memory.creeps[name].role) {
 			case "miner":
 				body = [WORK, WORK, CARRY, MOVE];
