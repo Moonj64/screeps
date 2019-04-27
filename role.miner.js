@@ -26,6 +26,7 @@ module.exports = {
 
 		if (repair_structures.length != 0) {
 			creep.repair(repair_structures[0]);
+			return;
 		}
 
 		var energy_caches = creep.pos.findInRange(FIND_STRUCTURES, 1, { 
