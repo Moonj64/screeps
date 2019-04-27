@@ -4,12 +4,6 @@ var roleUpgrader = require('role.upgrader');
 module.exports.loop = function() {
 	for(var name in Memory.creeps) {
 		var creep = Game.creeps[name];
-		if (name == "Miner2") {
-			continue;
-		}
-		if (name == "miner2" && creep == undefined) {
-			creep = Game.creeps["Miner2"];
-		}
 		if (creep == undefined) {
 			/* It's dead Jim */
 			var err = Game.spawns["Spawn1"].spawnCreep([WORK, WORK, CARRY, MOVE], name);
