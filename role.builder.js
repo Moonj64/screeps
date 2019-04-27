@@ -2,6 +2,10 @@ var roleUpgrader = require('role.upgrader');
 var creepBase = require('creep.base');
 
 module.exports = {
+	init: function(creep) {
+		
+	}
+
 	run: function(creep) {
 		if (creep.memory.working && creep.carry[RESOURCE_ENERGY] == 0) {
 			/* Out of energy, go get refilled */

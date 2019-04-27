@@ -3,17 +3,17 @@
 function miner_refill_priority(structure_type) {
 	switch (structure_type) {
 	case STRUCTURE_STORAGE:
-		return 1000;
-	case STRUCTURE_CONTAINER:
 		return 100;
+	case STRUCTURE_CONTAINER:
+		return 10;
 	case STRUCTURE_LINK:
-		return 50;
+		return 5;
 	case STRUCTURE_SPAWN:
-		return 1500;
+		return 130;
 	case STRUCTURE_EXTENSION:
-		return 1500;
+		return 150;
 	case STRUCTURE_TOWER:
-		return 1250;
+		return 125;
 	default:
 		return 0;
 	}
@@ -37,14 +37,16 @@ function update_energy_caches(creep) {
 }
 
 module.exports = {
-	run: function(creep) {
+	init: function(creep) {
 		if (creep.memory.worksource == undefined) {
 			/* Dont have a worksource, set it */
 			var sources = creep.room.find(FIND_SOURCES);
 			creep.memory.worksource = sources[0].id;
 		}
 		var worksource = Game.getObjectById(creep.memory.worksource);
+	}
 
+	run: function(creep) {
 		var range = creep.pos.getRangeTo(worksource);
 		if (range > 1) {
 			creep.moveTo(worksource);
@@ -66,7 +68,9 @@ module.exports = {
 			return;
 		}
 
-		update_energy_caches(creep);
+		if (creep.memory.energy_caches == undefined || creep.memory.energy_caches.length == 0) {
+			update_energy_caches(creep);
+		}
 
 		if (creep.memory.energy_caches.length == 0) {
 			/* Nowhere to drop off energy, look for construction sites */
