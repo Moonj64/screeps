@@ -14,7 +14,7 @@ module.exports = {
 			return;
 		}
 
-		if (creep.carry[RESOURCE_ENERGY] != creep.carryCapacity) {
+		if (creep.carry[RESOURCE_ENERGY] != creep.carryCapacity && ((creep.carry[RESOURCE_ENERGY] % 2) == 0)) {
 			creep.harvest(worksource);
 			return;
 		}
