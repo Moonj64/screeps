@@ -9,6 +9,7 @@ module.exports.loop = function() {
 		}
 		if (name == "miner2" && creep == undefined) {
 			creep = Game.creeps["Miner2"];
+			creep.memory = Memory.creeps["miner2"]
 		}
 		if (creep == undefined) {
 			/* It's dead Jim */
@@ -25,7 +26,7 @@ module.exports.loop = function() {
 				roleUpgrader.run(creep);
 				break;
 			default:
-				console.log("Unknown role for " + name);
+				console.log("Unknown role (" + creep.memory.role + ") for " + name);
 				break;
 			}
 		}
