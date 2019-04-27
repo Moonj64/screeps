@@ -27,7 +27,10 @@ module.exports = {
 				build_target = construction_sites[0];
 				creep.memory.build_target = build_target.id;
 			}
-
+			var err = creep.build(build_target);
+			if (err == ERR_NOT_IN_RANGE) {
+				creep.moveTo(build_target);
+			}
 			
 		} else {
 			creepBase.refill_energy(creep);
