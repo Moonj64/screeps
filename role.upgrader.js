@@ -1,15 +1,15 @@
 
 module.exports = {
 	run: function(creep) {
-		if (creep.memory.upgrading && creep.carry[RESOURCE_ENERGY] == 0) {
+		if (creep.memory.working && creep.carry[RESOURCE_ENERGY] == 0) {
 			/* Out of energy, go get refilled */
-			creep.memory.upgrading = false;
-		} else if (!creep.memory.upgrading && creep.carry[RESOURCE_ENERGY] == creep.carryCapacity) {
+			creep.memory.working = false;
+		} else if (!creep.memory.working && creep.carry[RESOURCE_ENERGY] == creep.carryCapacity) {
 			/* Energy refilled, proceed to upgrade */
-			creep.memory.upgrading = true;
+			creep.memory.working = true;
 		}
 
-		if (creep.memory.upgrading) {
+		if (creep.memory.working) {
 			var spawn = Game.spawns["Spawn1"];
 			if (spawn.energy != spawn.energyCapacity) {
 				var err = creep.transfer(spawn, RESOURCE_ENERGY);
