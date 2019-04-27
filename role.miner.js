@@ -81,7 +81,12 @@ module.exports = {
 			}
 		} else {
 			/* We have a cache to drop off in, drop off our energy there */
-			creep.transfer(Game.getObjectById(creep.memory.energy_caches[0]), RESOURCE_ENERGY);
+			for (var i = 0; i < creep.memory.energy_caches.length; i++) {
+				var err = creep.transfer(Game.getObjectById(creep.memory.energy_caches[i]), RESOURCE_ENERGY);
+				if (err == OK) {
+					break;
+				}
+			}
 		}
 	}
 };
