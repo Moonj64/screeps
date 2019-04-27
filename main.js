@@ -19,7 +19,7 @@ module.exports.loop = function() {
 				break;
 			}
 			var err = Game.spawns["Spawn1"].spawnCreep(body, name);
-			if (err != OK) {
+			if (err != OK && err != ERR_NOT_ENOUGH_ENERGY) {
 				console.log("Could not spawn creep (" + name + "), error code: " + err);
 			}
 		} else {
