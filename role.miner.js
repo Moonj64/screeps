@@ -25,7 +25,7 @@ function update_energy_caches(creep) {
 			return (miner_refill_priority(structure.structureType) > 0);
 		}});
 	energy_cache_objects.sort(function (a, b) {
-		return (miner_refill_priority(a.structureType) - miner_refill_priority(b.structureType));
+		return (miner_refill_priority(b.structureType) - miner_refill_priority(a.structureType));
 	});
 
 	var energy_cache_ids = [];
