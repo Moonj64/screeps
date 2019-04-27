@@ -16,6 +16,7 @@ module.exports = {
 				if (err == ERR_NOT_IN_RANGE) {
 					creep.moveTo(spawn);
 				}
+				return;
 			}
 
 			var err = creep.upgradeController(creep.room.controller);
