@@ -43,10 +43,11 @@ module.exports = {
 			var sources = creep.room.find(FIND_SOURCES);
 			creep.memory.worksource = sources[0].id;
 		}
-		var worksource = Game.getObjectById(creep.memory.worksource);
+		
 	},
 
 	run: function(creep) {
+		var worksource = Game.getObjectById(creep.memory.worksource);
 		var range = creep.pos.getRangeTo(worksource);
 		if (range > 1) {
 			creep.moveTo(worksource);
