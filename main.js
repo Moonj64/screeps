@@ -15,7 +15,7 @@ module.exports.loop = function() {
 			case "upgrader":
 				body = [WORK, CARRY, CARRY, MOVE, MOVE];
 				break;
-			case "builder"
+			case "builder":
 				body = [WORK, CARRY, CARRY, MOVE, MOVE];
 				break;
 			default:	
