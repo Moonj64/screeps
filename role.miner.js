@@ -44,7 +44,7 @@ module.exports = {
 			creep.memory.worksource = sources[0].id;
 		}
 		var worksource = Game.getObjectById(creep.memory.worksource);
-	}
+	},
 
 	run: function(creep) {
 		var range = creep.pos.getRangeTo(worksource);

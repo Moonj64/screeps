@@ -3,8 +3,8 @@ var creepBase = require('creep.base');
 
 module.exports = {
 	init: function(creep) {
-		
-	}
+
+	},
 
 	run: function(creep) {
 		if (creep.memory.working && creep.carry[RESOURCE_ENERGY] == 0) {
