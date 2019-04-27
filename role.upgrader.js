@@ -19,14 +19,14 @@ module.exports = {
 			if (spawn.energy != spawn.energyCapacity) {
 				var err = creep.transfer(spawn, RESOURCE_ENERGY);
 				if (err == ERR_NOT_IN_RANGE) {
-					creep.moveTo(spawn);
+					creepBase.moveTo(creep, spawn);
 				}
 				return;
 			}
 
 			var err = creep.upgradeController(creep.room.controller);
 			if (err == ERR_NOT_IN_RANGE) {
-				creep.moveTo(creep.room.controller);
+				creepBase.moveTo(creep, creep.room.controller);
 			}
 		} else {
 			creepBase.refill_energy(creep);

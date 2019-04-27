@@ -1,4 +1,4 @@
-
+var creepBase = require('creep.base');
 
 function miner_refill_priority(structure_type) {
 	switch (structure_type) {
@@ -50,7 +50,7 @@ module.exports = {
 		var worksource = Game.getObjectById(creep.memory.worksource);
 		var range = creep.pos.getRangeTo(worksource);
 		if (range > 1) {
-			creep.moveTo(worksource);
+			creepBase.moveTo(creep, worksource);
 			return;
 		}
 

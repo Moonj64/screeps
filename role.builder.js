@@ -33,7 +33,7 @@ module.exports = {
 			}
 			var err = creep.build(build_target);
 			if (err == ERR_NOT_IN_RANGE) {
-				creep.moveTo(build_target);
+				creepBase.moveTo(creep, build_target);
 			}
 			
 		} else {
