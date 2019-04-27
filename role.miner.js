@@ -34,7 +34,7 @@ module.exports = {
 				switch (structure.structureType) {
 				case STRUCTURE_STORAGE:
 				case STRUCTURE_CONTAINER:
-					return structure.store[RESOURCE_ENERGY] != structure.storeCapacity;
+					return true;
 				case STRUCTURE_LINK:
 				case STRUCTURE_SPAWN:
 				case STRUCTURE_EXTENSION:
