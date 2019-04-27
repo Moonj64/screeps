@@ -30,7 +30,7 @@ function update_energy_caches(creep) {
 
 	var energy_cache_ids = [];
 	for (energy_cache_object in energy_cache_objects) {
-		energy_cache_ids.append(energy_cache_object.id);
+		energy_cache_ids.push(energy_cache_object.id);
 	}
 
 	creep.memory.energy_caches = energy_cache_ids;
