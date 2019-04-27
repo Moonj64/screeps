@@ -21,7 +21,7 @@ module.exports = {
 
 		var repair_structures = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 			filter:function(structure) {
-				return structure.hits != structure.hitsMax;
+				return structure.hits < (structure.hitsMax * 0.9);
 		}});
 
 		if (repair_structures.length != 0) {
