@@ -1,4 +1,5 @@
 var roleUpgrader = require('role.upgrader');
+var creepBase = require('creep.base');
 
 module.exports = {
 	run: function(creep) {
@@ -29,15 +30,7 @@ module.exports = {
 
 			
 		} else {
-			if (creep.memory.energy_source != undefined) {
-				var energy_source = Game.getObjectById(creep.memory.energy_source);
-				var	err = creep.withdraw(energy_source, RESOURCE_ENERGY);
-				if (err == ERR_NOT_IN_RANGE) {
-					creep.moveTo(energy_source);
-				}
-			} else {
-				/* TODO logic to acquire an energy source*/
-			}
+			creepBase.refill_energy(creep);
 		}
 	}
 }
