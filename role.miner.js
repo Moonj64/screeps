@@ -1,4 +1,41 @@
 
+
+function miner_refill_priority(structure_type) {
+	switch (structure_type) {
+	case STRUCTURE_STORAGE:
+		return 1000;
+	case STRUCTURE_CONTAINER:
+		return 100;
+	case STRUCTURE_LINK:
+		return 50;
+	case STRUCTURE_SPAWN:
+		return 1500;
+	case STRUCTURE_EXTENSION:
+		return 1500;
+	case STRUCTURE_TOWER:
+		return 1250;
+	default:
+		return 0;
+	}
+}
+
+function update_energy_caches(creep) {
+	var energy_cache_objects = creep.pos.findInRange(FIND_STRUCTURES, 1, { 
+		filter:function(structure) { 
+			return (miner_refill_priority(structure.structureType) > 0);
+		}});
+	energy_cache_objects.sort(function (a, b) {
+		return (miner_refill_priority(a.structureType) - miner_refill_priority(b.structureType));
+	});
+
+	var energy_cache_ids = [];
+	for (energy_cache_object in energy_cache_objects) {
+		energy_cache_ids.append(energy_cache_object.id);
+	}
+
+	creep.memory.energy_caches = energy_cache_ids;
+}
+
 module.exports = {
 	run: function(creep) {
 		if (creep.memory.worksource == undefined) {
@@ -29,24 +66,9 @@ module.exports = {
 			return;
 		}
 
-		var energy_caches = creep.pos.findInRange(FIND_STRUCTURES, 1, { 
-			filter:function(structure) { 
-				switch (structure.structureType) {
-				case STRUCTURE_STORAGE:
-				case STRUCTURE_CONTAINER:
-					return true;
-				case STRUCTURE_LINK:
-				case STRUCTURE_SPAWN:
-				case STRUCTURE_EXTENSION:
-				case STRUCTURE_TOWER:
-					/* true only if energy required, false otherwise */
-					return structure.energy != structure.energyCapacity;
-				default:
-					return false;
-				}
-			}});
+		update_energy_caches(creep);
 
-		if (energy_caches.length == 0) {
+		if (creep.memory.energy_caches.length == 0) {
 			/* Nowhere to drop off energy, look for construction sites */
 			var construction_sites = creep.pos.findInRange(FIND_MY_CONSTRUCTION_SITES, 1);
 
@@ -59,7 +81,7 @@ module.exports = {
 			}
 		} else {
 			/* We have a cache to drop off in, drop off our energy there */
-			creep.transfer(energy_caches[0], RESOURCE_ENERGY);
+			creep.transfer(Game.getObjectById(creep.memory.energy_caches[0]), RESOURCE_ENERGY);
 		}
 	}
 };
