@@ -16,7 +16,7 @@ module.exports.loop = function() {
 				body = [WORK, CARRY, CARRY, MOVE, MOVE];
 				break;
 			case "builder"
-				body = [WORK, CARRY, CARRY, MOVE, MOVE]
+				body = [WORK, CARRY, CARRY, MOVE, MOVE];
 				break;
 			default:	
 				body = [WORK, CARRY, MOVE];
