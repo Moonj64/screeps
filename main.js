@@ -1,6 +1,7 @@
-var roleMiner = require('role.miner');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
+var roleMiner     = require('role.miner');
+var roleUpgrader  = require('role.upgrader');
+var roleBuilder   = require('role.builder');
+var roleRestocker = require('role.restocker');
 
 module.exports.loop = function() {
 	for(var name in Memory.creeps) {
@@ -17,6 +18,9 @@ module.exports.loop = function() {
 				break;
 			case "builder":
 				body = [WORK, CARRY, CARRY, MOVE, MOVE, MOVE];
+				break;
+			case "restocker":
+				body = [CARRY, CARRY, CARRY, MOVE, MOVE, MOVE];
 				break;
 			default:	
 				body = [WORK, CARRY, MOVE];
@@ -36,6 +40,9 @@ module.exports.loop = function() {
 				break;
 			case "builder":
 				roleBuilder.run(creep);
+				break;
+			case "restocker":
+				roleRestocker.run(creep);
 				break;
 			default:
 				console.log("Creep (" + name + ") has unknown role (" + creep.memory.role + ")");

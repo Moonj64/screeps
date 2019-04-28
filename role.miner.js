@@ -23,7 +23,8 @@ function update_energy_caches(creep) {
 	var energy_cache_objects = creep.pos.findInRange(FIND_STRUCTURES, 1, { 
 		filter:function(structure) { 
 			return (miner_refill_priority(structure.structureType) > 0);
-		}});
+		}
+	});
 	energy_cache_objects.sort(function (a, b) {
 		return (miner_refill_priority(b.structureType) - miner_refill_priority(a.structureType));
 	});
@@ -43,7 +44,6 @@ module.exports = {
 			var sources = creep.room.find(FIND_SOURCES);
 			creep.memory.worksource = sources[0].id;
 		}
-		
 	},
 
 	run: function(creep) {
@@ -62,7 +62,8 @@ module.exports = {
 		var repair_structures = creep.pos.findInRange(FIND_STRUCTURES, 1, {
 			filter:function(structure) {
 				return structure.hits < (structure.hitsMax * 0.9);
-		}});
+			}
+		});
 
 		if (repair_structures.length != 0) {
 			creep.repair(repair_structures[0]);
