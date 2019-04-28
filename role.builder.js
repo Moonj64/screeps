@@ -8,9 +8,8 @@ module.exports = {
 
 	run: function(creep) {
 		if (creepBase.ready_to_work(creep)) {
-			var build_target;
-			if (creep.memory.build_target == undefined || 
-				((build_target = Game.getObjectById(creep.memory.build_target)) == undefined)) {
+			var build_target = Game.getObjectById(creep.memory.build_target);
+			if (build_target == undefined) {
 				/* Either no defined build target or our build target doesnt exist 
 				 * In either case, get a new build target
 				 */
@@ -27,7 +26,6 @@ module.exports = {
 			if (err == ERR_NOT_IN_RANGE) {
 				creepBase.moveTo(creep, build_target);
 			}
-			
 		}
 	}
 }
