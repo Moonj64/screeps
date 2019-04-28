@@ -6,15 +6,7 @@ module.exports = {
 	},
 
 	run: function(creep) {
-		if (creep.memory.working && creep.carry[RESOURCE_ENERGY] == 0) {
-			/* Out of energy, go get refilled */
-			creep.memory.working = false;
-		} else if (!creep.memory.working && creep.carry[RESOURCE_ENERGY] == creep.carryCapacity) {
-			/* Energy refilled, proceed to upgrade */
-			creep.memory.working = true;
-		}
-
-		if (creep.memory.working) {
+		if (creepBase.ready_to_work(creep)) {
 			var spawn = Game.spawns["Spawn1"];
 			if (spawn.energy != spawn.energyCapacity) {
 				var err = creep.transfer(spawn, RESOURCE_ENERGY);
@@ -28,8 +20,6 @@ module.exports = {
 			if (err == ERR_NOT_IN_RANGE) {
 				creepBase.moveTo(creep, creep.room.controller);
 			}
-		} else {
-			creepBase.refill_energy(creep);
 		}
 	}
 };
