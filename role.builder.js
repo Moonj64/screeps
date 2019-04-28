@@ -2,7 +2,7 @@ var roleUpgrader = require('role.upgrader');
 var creepBase = require('creep.base');
 
 function run_repair(creep) {
-	var repair target = Game.getObjectById(creep.memory.repair_target);
+	var repair_target = Game.getObjectById(creep.memory.repair_target);
 	if (repair_target == undefined) {
 
 	}
