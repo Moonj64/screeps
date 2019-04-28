@@ -25,7 +25,7 @@ module.exports = {
 	run: function(creep) {
 		if (creepBase.ready_to_work(creep)) {
 			var restock_target = Game.getObjectById(creep.memory.restock_target);
-			if (restock_target == undefined) {
+			if (restock_target == undefined || restock_target.energy == restock_target.energyCapacity) {
 				targets = find_restock_targets(creep);
 				if (targets.length == 0) {
 					/* Nothing to restock */
