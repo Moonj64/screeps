@@ -14,6 +14,7 @@ function find_restock_targets(creep) {
 		}
 	});
 	targets = _.sortBy(targets, s => creep.pos.getRangeTo(s));
+	return targets;
 }
 
 module.exports = {
@@ -23,7 +24,20 @@ module.exports = {
 
 	run: function(creep) {
 		if (creepBase.ready_to_work(creep)) {
-
+			var restock_target = Game.getObjectById(creep.memory.restock_target);
+			if (restock_target == undefined) {
+				targets = find_restock_targets(creep);
+				if (targets.length == 0) {
+					/* Nothing to restock */
+					return;
+				}
+				restock_target = targets[0];
+				creep.memory.restock_target = restock_target.id;
+			}
+			var err = creep.transfer(restock_target, RESOURCE_ENERGY);
+			if (err == ERR_NOT_IN_RANGE) {
+				creepBase.moveTo(creep, restock_target);
+			}
 		}
 	}
 };
