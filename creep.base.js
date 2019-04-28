@@ -1,6 +1,10 @@
 
 module.exports = {
 	refill_energy: function(creep) {
+		if (creep.carry[RESOURCE_ENERGY] == creep.carryCapacity) {
+			/* Already full, no need for energy */
+			return;
+		}
 		if (creep.memory.energy_source == undefined) {
 			/* TODO logic to acquire an energy source*/
 			return;
