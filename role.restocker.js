@@ -7,13 +7,13 @@ function find_restock_targets(creep) {
 			case STRUCTURE_SPAWN:
 			case STRUCTURE_EXTENSION:
 			case STRUCTURE_TOWER:
-				return true;
+				return structure.energy < structure.energyCapacity;
 			default:
 				return false;
 			}
 		}
 	});
-
+	targets = _.sortBy(targets, s => creep.pos.getRangeTo(s));
 }
 
 module.exports = {
