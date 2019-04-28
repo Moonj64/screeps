@@ -11,13 +11,13 @@ module.exports.loop = function() {
 			var body = [WORK, CARRY, MOVE];
 			switch (Memory.creeps[name].role) {
 			case "miner":
-				body = [WORK, WORK, WORK, CARRY, MOVE];
+				body = [WORK, WORK, WORK, WORK, CARRY, MOVE, MOVE];
 				break;
 			case "upgrader":
-				body = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE];
+				body = [WORK, WORK, CARRY, CARRY, MOVE, MOVE];
 				break;
 			case "builder":
-				body = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE];
+				body = [WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE];
 				break;
 			case "restocker":
 				body = [CARRY, CARRY, CARRY, MOVE, MOVE, MOVE];
