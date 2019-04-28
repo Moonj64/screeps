@@ -29,7 +29,7 @@ module.exports = {
 				targets = find_restock_targets(creep);
 				if (targets.length == 0) {
 					/* Nothing to restock */
-					creepBase.refillEnergy(creep);
+					creepBase.refill_energy(creep);
 					return;
 				}
 				restock_target = targets[0];
