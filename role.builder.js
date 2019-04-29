@@ -42,5 +42,21 @@ module.exports = {
 				err = run_build(creep);
 			}
 		}
+	},
+
+	get_body: function(level) {
+		switch (level) {
+		case 0:
+		case 1:
+			/* Just starting, cost must be <= 300 */
+			return [ WORK, CARRY, MOVE, MOVE ];
+		case 2:
+			/* 5 extensions possible, total energy 550 */
+			return [ WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE ];
+		case 3:
+		default:
+			/* 10 extensions possible, total energy 800 */
+			return [ WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE ];
+		}
 	}
 }

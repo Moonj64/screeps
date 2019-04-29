@@ -40,5 +40,21 @@ module.exports = {
 				creepBase.moveTo(creep, restock_target);
 			}
 		}
+	},
+
+	get_body: function(level) {
+		switch (level) {
+		case 0:
+		case 1:
+			/* Just starting, cost must be <= 300 */
+			return [ CARRY, CARRY, CARRY, MOVE, MOVE, MOVE ];
+		case 2:
+			/* 5 extensions possible, total energy 550 */
+			return [ CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE ];
+		case 3:
+		default:
+			/* 10 extensions possible, total energy 800 */
+			return [ CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE ];
+		}
 	}
 };
