@@ -25,17 +25,17 @@ module.exports.loop = function() {
 		var role = get_role(Memory.creeps[name].role);
 		if (role == null) {
 			console.log("Creep (" + name + ") has unknown role (" + Memory.creeps[name].role + ")");
-			continue;
-		}
-		if (creep == undefined) {
-			/* It's dead Jim */
-			var body = role.get_body(Game.spawns["Spawn1"].room.controller.level);
-			var err = Game.spawns["Spawn1"].spawnCreep(body, name);
-			if (err != OK && err != ERR_NOT_ENOUGH_ENERGY) {
-				console.log("Could not spawn creep (" + name + "), error code: " + err);
-			}
 		} else {
-			role.run(creep);
+			if (creep == undefined) {
+				/* It's dead Jim */
+				var body = role.get_body(Game.spawns["Spawn1"].room.controller.level);
+				var err = Game.spawns["Spawn1"].spawnCreep(body, name);
+				if (err != OK && err != ERR_NOT_ENOUGH_ENERGY) {
+					console.log("Could not spawn creep (" + name + "), error code: " + err);
+				}
+			} else {
+				role.run(creep);
+			}
 		}
 	}
 }
