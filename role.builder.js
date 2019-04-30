@@ -20,6 +20,7 @@ function run_repair(creep) {
 	if (err == ERR_NOT_IN_RANGE) {
 		creepBase.moveTo(creep, repair_target);
 	}
+	return err;
 }
 
 function run_build(creep) {
