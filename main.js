@@ -21,7 +21,7 @@ function get_role(role_name) {
 
 
 module.exports.loop = function() {
-	for (var room in Memory.rooms) {
+	for (var room in Game.rooms) {
 		managerRoom.run(room);
 	}
 	for(var name in Memory.creeps) {
