@@ -2,6 +2,7 @@ var roleMiner     = require('role.miner');
 var roleUpgrader  = require('role.upgrader');
 var roleBuilder   = require('role.builder');
 var roleRestocker = require('role.restocker');
+var managerRoom   = require('manger.room');
 
 function get_role(role_name) {
 	switch (role_name) {
@@ -20,6 +21,9 @@ function get_role(role_name) {
 
 
 module.exports.loop = function() {
+	for (var room in Memory.rooms) {
+		managerRoom.run(room);
+	}
 	for(var name in Memory.creeps) {
 		var creep = Game.creeps[name];
 		var role = get_role(Memory.creeps[name].role);
