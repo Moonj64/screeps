@@ -1,5 +1,7 @@
 function init(room) {
-	Memory.rooms[room.name] = {};
+//	Memory.rooms[room.name] = {};
+//	room.memory = Memory.rooms[room.name];
+	room.memory = {};
 
 	var sources = room.find(FIND_SOURCES);
 	room.memory.sources = [];
@@ -20,9 +22,9 @@ function checkMiners(room) {
 
 module.exports = {
 	run: function(room) {
-		if (room.memory == undefined) {
+//		if (room.memory == undefined) {
 			init(room);
-		}
+//		}
 		checkMiners(room);
 		for(var name in room.memory.creeps) {
 
