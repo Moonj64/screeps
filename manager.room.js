@@ -1,5 +1,5 @@
 function init(room) {
-	room.memory = {};
+	Memory.rooms[room.name] = {};
 
 	var sources = room.find(FIND_SOURCES);
 	room.memory.sources = [];
