@@ -2,7 +2,7 @@ var roleMiner     = require('role.miner');
 var roleUpgrader  = require('role.upgrader');
 var roleBuilder   = require('role.builder');
 var roleRestocker = require('role.restocker');
-var managerRoom   = require('manger.room');
+var managerRoom   = require('manager.room');
 
 function get_role(role_name) {
 	switch (role_name) {
