@@ -94,19 +94,7 @@ module.exports = {
 		}
 	},
 
-	get_body: function(level) {
-		switch (level) {
-		case 0:
-		case 1:
-			/* Just starting, cost must be <= 300 */
-			return [ WORK, WORK, CARRY, MOVE ];
-		case 2:
-			/* 5 extensions possible, total energy 550 */
-			return [ WORK, WORK, WORK, WORK, CARRY, MOVE ];
-		case 3:
-		default:
-			/* 10 extensions possible, total energy 800 */
-			return [ WORK, WORK, WORK, WORK, WORK, CARRY, MOVE ];
-		}
+	get_body: function(energy) {
+		return [ WORK, WORK, CARRY, MOVE ];
 	}
 };
