@@ -1,11 +1,16 @@
+function init(room) {
+	room.memory = {};
+
+	var sources = room.find(FIND_SOURCES);
+	room.memory.sources = [];
+	_.forEach(sources, function(source) {
+		room.memory.sources.push({ id:source.id });
+	});
+}
+
+
+
 function checkMiners(room) {
-	if (room.memory.sources == undefined) {
-		var sources = room.find(FIND_SOURCES);
-		room.memory.sources = [];
-		_.forEach(sources, function(source) {
-			room.memory.sources.push({ id:source.id });
-		});
-	}
 	_.forEach(room.memory.sources, function(source_mem) {
 		var source = Game.getObjectById(source_mem.id);
 
@@ -15,6 +20,9 @@ function checkMiners(room) {
 
 module.exports = {
 	run: function(room) {
+		if (room.memory == undefined) {
+			init(room);
+		}
 		checkMiners(room);
 		for(var name in room.memory.creeps) {
 
