@@ -6,7 +6,8 @@ function init(room) {
 	var sources = room.find(FIND_SOURCES);
 	room.memory.sources = [];
 	_.forEach(sources, function(source) {
-		room.memory.sources[source.id] = { id:source.id };
+		var source_id = source.id;
+		room.memory.sources[source_id] = { id:source_id };
 	});
 }
 
